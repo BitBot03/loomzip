@@ -312,7 +312,7 @@ export default function TasksView() {
         
         <div className="flex items-center gap-2 sm:gap-4 ml-4">
           {isMultiSelectMode && (
-             <div className="flex items-center gap-3">
+             <div className="flex items-center gap-3 motion-enter">
                 <span className="text-sm font-medium text-zinc-400 whitespace-nowrap">{selectedTaskIds.size} selected</span>
                 <button
                     disabled={selectedTaskIds.size === 0}
@@ -402,7 +402,7 @@ export default function TasksView() {
                 </Droppable>
               </DragDropContext>
             ) : (
-              <div className="space-y-8">
+              <div className="space-y-8 motion-stagger">
                 {listGroups.overdue.length > 0 && (
                   <div>
                     <h3 className="text-xs font-bold text-rose-500 uppercase tracking-wider mb-3 flex items-center gap-2">

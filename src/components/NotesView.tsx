@@ -470,7 +470,7 @@ export default function NotesView() {
            </div>
            
            {isMultiSelectMode && (
-             <div className="flex items-center justify-between px-1 py-1 mt-2 mb-[-8px]">
+              <div className="flex items-center justify-between px-1 py-1 mt-2 mb-[-8px] motion-enter">
                <span className="text-xs text-zinc-400">{selectedNoteIds.size} selected</span>
                <button
                  disabled={selectedNoteIds.size === 0}
@@ -483,7 +483,7 @@ export default function NotesView() {
            )}
         </div>
         
-        <div className="flex-1 overflow-y-auto p-3 space-y-4 custom-scrollbar">
+        <div className="flex-1 overflow-y-auto p-3 space-y-4 custom-scrollbar motion-stagger">
           {filteredNotes.length === 0 ? (
             <div className="text-center py-10 text-zinc-500 text-sm">
               <StickyNote size={32} className="mx-auto mb-3 opacity-20" />
@@ -492,7 +492,7 @@ export default function NotesView() {
           ) : (
             <>
               {pinnedNotes.length > 0 && (
-                <div className="space-y-1">
+                  <div className="space-y-1 motion-stagger">
                   <h3 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider px-3 py-1 flex items-center gap-1.5">
                     <Pin size={12} /> Pinned
                   </h3>
@@ -501,7 +501,7 @@ export default function NotesView() {
               )}
               
               {unpinnedNotes.length > 0 && (
-                <div className="space-y-1">
+                <div className="space-y-1 motion-stagger">
                   {pinnedNotes.length > 0 && (
                     <h3 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider px-3 py-1 mt-4">
                       All Notes
@@ -625,7 +625,7 @@ export default function NotesView() {
 
               {/* Formatting Toolbar (Only show in Write mode) */}
               {isEditing && (
-                <div className="px-6 py-2 border-t border-zinc-900 flex flex-wrap items-center gap-1 bg-[#0f0f11]">
+                <div className="px-6 py-2 border-t border-zinc-900 flex flex-wrap items-center gap-1 bg-[#0f0f11] motion-enter">
                   <ToolbarButton icon={<Bold size={15} />} onClick={() => insertFormatting('**', '**')} tooltip="Bold (**text**)" />
                   <ToolbarButton icon={<Italic size={15} />} onClick={() => insertFormatting('*', '*')} tooltip="Italic (*text*)" />
                   <ToolbarButton icon={<Strikethrough size={15} />} onClick={() => insertFormatting('~~', '~~')} tooltip="Strikethrough (~~text~~)" />

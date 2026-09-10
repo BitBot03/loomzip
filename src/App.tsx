@@ -35,7 +35,9 @@ export default function App() {
       <Toaster position="bottom-center" toastOptions={{ style: { background: '#18181b', color: '#fff', border: '1px solid #27272a', borderRadius: '12px' } }} />
       <Sidebar currentView={currentView} setCurrentView={setCurrentView} />
       <main className="flex-1 overflow-hidden relative flex flex-col">
-        {renderContent()}
+        <div key={currentView} className="motion-page flex-1 min-h-0">
+          {renderContent()}
+        </div>
       </main>
     </div>
   );

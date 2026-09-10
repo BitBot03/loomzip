@@ -5,7 +5,133 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+@keyframes motion-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes motion-overlay-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes motion-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes motion-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes motion-list-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @layer utilities {
+  .motion-page {
+    animation: motion-page-in 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: opacity, transform;
+  }
+
+  .animate-fade-in {
+    animation: motion-overlay-in 220ms ease-out both;
+  }
+
+  .animate-slide-up {
+    animation: motion-card-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: opacity, transform;
+  }
+
+  .animate-slide-down {
+    animation: motion-list-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-modal-overlay {
+    animation: motion-overlay-in 220ms ease-out both;
+  }
+
+  .motion-modal-card {
+    animation: motion-card-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: opacity, transform;
+  }
+
+  .motion-popover {
+    animation: motion-popover-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: top right;
+    will-change: opacity, transform;
+  }
+
+  .motion-enter {
+    animation: motion-list-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: opacity, transform;
+  }
+
+  .motion-stagger > * {
+    animation: motion-list-in 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .motion-stagger > *:nth-child(1) { animation-delay: 30ms; }
+  .motion-stagger > *:nth-child(2) { animation-delay: 60ms; }
+  .motion-stagger > *:nth-child(3) { animation-delay: 90ms; }
+  .motion-stagger > *:nth-child(4) { animation-delay: 120ms; }
+  .motion-stagger > *:nth-child(5) { animation-delay: 150ms; }
+  .motion-stagger > *:nth-child(n+6) { animation-delay: 180ms; }
+
+  /* Shared fallback for modal and popover markup already used throughout the app. */
+  div[class*="fixed"][class*="inset-0"][class*="bg-black"] {
+    animation: motion-overlay-in 220ms ease-out both;
+  }
+
+  div[class*="fixed"][class*="inset-0"][class*="bg-black"] > div:not([class*="fixed"]) {
+    animation: motion-card-in 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    will-change: opacity, transform;
+  }
+
+  div[class*="absolute"][class*="top-full"][class*="bg-"] {
+    animation: motion-popover-in 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    transform-origin: top right;
+    will-change: opacity, transform;
+  }
+
+  button, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:not(:disabled):active, [role="button"]:active {
+    transform: scale(0.98);
+  }
+
+  input, textarea, select {
+    transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+  }
+
   .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -19,5 +145,16 @@
   }
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #3f3f46;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
   }
 }

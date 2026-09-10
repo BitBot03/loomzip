@@ -674,7 +674,7 @@ let importedCount = 0;
 
       {/* Editing Bulk Actions */}
       {isEditing && (
-        <div className={`px-6 py-3 ${selectedIds.size > 0 ? 'bg-zinc-800/30 border-b border-zinc-800' : 'bg-zinc-900/20 border-b border-zinc-900'} flex items-center justify-between no-print shrink-0`}>
+         <div className={`px-6 py-3 ${selectedIds.size > 0 ? 'bg-zinc-800/30 border-b border-zinc-800' : 'bg-zinc-900/20 border-b border-zinc-900'} flex items-center justify-between no-print shrink-0 motion-enter`}>
           <div className="flex items-center gap-3">
             <button 
               onClick={toggleSelectAll}
@@ -728,11 +728,11 @@ let importedCount = 0;
             <DragDropContext onDragEnd={handleDragEnd}>
               <Droppable droppableId="record-list">
                 {(provided) => (
-                  <div 
+                     <div 
                     {...provided.droppableProps} 
                     ref={provided.innerRef}
                     className={`
-                      ${viewMode === 'grid' ? 'flex flex-col gap-4 p-8 max-w-5xl mx-auto' : 'flex flex-col gap-3 p-6 max-w-6xl mx-auto'}
+                       ${viewMode === 'grid' ? 'flex flex-col gap-4 p-8 max-w-5xl mx-auto motion-stagger' : 'flex flex-col gap-3 p-6 max-w-6xl mx-auto motion-stagger'}
                     `}
                   >
                     {filteredRecords.map((record, index) => {

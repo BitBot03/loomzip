@@ -86,8 +86,8 @@ export default function FieldManager({ collection, onClose }: { collection: Coll
   };
 
   return (
-    <div className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-zinc-950 border border-zinc-800 rounded-2xl w-full max-w-2xl shadow-2xl flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 motion-modal-overlay">
+      <div className="bg-zinc-950 border border-zinc-800 rounded-2xl w-full max-w-2xl shadow-2xl flex flex-col max-h-[90vh] motion-modal-card">
         <div className="flex items-center justify-between p-4 border-b border-zinc-800 shrink-0">
           <div>
             <h3 className="text-lg font-bold text-white">Configure Form Fields</h3>

@@ -41,8 +41,8 @@ export default function SchemaBuilder({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
-      <div className="bg-[#0a0a0a] border border-zinc-800/60 rounded-[32px] w-full max-w-[540px] shadow-[0_0_80px_rgba(0,0,0,0.8)] flex flex-col max-h-[90vh] my-auto animate-slide-up">
+    <div className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 motion-modal-overlay" onMouseDown={(e) => { if (e.target === e.currentTarget) onClose(); }}>
+      <div className="bg-[#0a0a0a] border border-zinc-800/60 rounded-[32px] w-full max-w-[540px] shadow-[0_0_80px_rgba(0,0,0,0.8)] flex flex-col max-h-[90vh] my-auto motion-modal-card">
         <div className="flex items-center justify-between p-8 pb-6 border-b border-zinc-800/40 shrink-0 bg-transparent">
           <h3 className="text-2xl font-bold text-white flex items-center gap-2">
             Create New List

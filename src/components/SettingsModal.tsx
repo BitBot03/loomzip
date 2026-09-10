@@ -78,8 +78,8 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div ref={modalRef} className="bg-[#0a0a0a] border border-zinc-800/60 rounded-[32px] w-full max-w-md shadow-[0_0_80px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden animate-slide-up">
+    <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 motion-modal-overlay">
+      <div ref={modalRef} className="bg-[#0a0a0a] border border-zinc-800/60 rounded-[32px] w-full max-w-md shadow-[0_0_80px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden motion-modal-card">
         <div className="flex items-center justify-between p-8 pb-6 border-b border-zinc-800/40 shrink-0 bg-transparent">
           <h3 className="text-2xl font-bold text-white tracking-tight">Settings</h3>
           <button onClick={onClose} className="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 transition-colors">

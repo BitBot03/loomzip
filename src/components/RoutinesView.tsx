@@ -884,7 +884,7 @@ export default function RoutinesView() {
              
              <div className="flex items-center gap-2">
                 {isMultiSelectMode && (
-                   <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3 motion-enter">
                       <span className="text-sm font-medium text-zinc-400">{selectedRoutineIds.size} selected</span>
                       <button 
                          disabled={selectedRoutineIds.size === 0}
@@ -925,7 +925,7 @@ export default function RoutinesView() {
             </div>
           ) : (
             <DragDropContext onDragEnd={handleDragEnd}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 motion-stagger">
                 {sections.map(section => (
                   section.items.length > 0 && (
                     <div key={section.id} className="mb-2">
